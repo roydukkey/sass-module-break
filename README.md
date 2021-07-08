@@ -2,7 +2,6 @@
 
 [![Release Version](https://img.shields.io/npm/v/sass-break.svg)](https://www.npmjs.com/package/sass-break)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/roydukkey/sass-module-break)
 
 This Sass module provides mixins, functions, and variables for working with breakpoints and aids in responsive development.
 
