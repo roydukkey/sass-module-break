@@ -16,13 +16,13 @@
 ///
 /// @throw No breakpoint exists by the name `#{$name}`
 ///
-	@overload out($name)
+	@overload up($name)
 ///
 /// Generates a media query rule for the given size and wider.
 ///
 /// @param {Number} $size - The size at which the generated rule should break.
 ///
-	@overload out($size)
+	@overload up($size)
 ///
 /// @return {String}
 ///
@@ -32,8 +32,8 @@
 /// @require internal.to-string
 /// @require internal.validate-breakpoint
 ///
-@function out($breakpoint)
-	$breakpoint: internal.validate-breakpoint('out', 'breakpoint', $breakpoint, 'min-width')
+@function up($breakpoint)
+	$breakpoint: internal.validate-breakpoint('up', 'breakpoint', $breakpoint, 'min-width')
 
 	@if meta.type-of($breakpoint) != 'map'
 		@error $breakpoint
@@ -48,13 +48,13 @@
 ///
 /// @throw No breakpoint exists by the name `#{$name}`
 ///
-	@overload out($name)
+	@overload up($name)
 ///
 /// Applies a media query rule to the content for the given size and wider.
 ///
 /// @param {Number} $size - The size at which the applied rule should break.
 ///
-	@overload out($size)
+	@overload up($size)
 ///
 /// @output Unless the breakpoint's size is zero, makes the content apply to the given breakpoint.
 ///
@@ -64,8 +64,8 @@
 /// @require internal.to-string
 /// @require internal.validate-breakpoint
 ///
-@mixin out($breakpoint)
-	$breakpoint: internal.validate-breakpoint('out', 'breakpoint', $breakpoint, 'min-width', true)
+@mixin up($breakpoint)
+	$breakpoint: internal.validate-breakpoint('up', 'breakpoint', $breakpoint, 'min-width', true)
 
 	@if $breakpoint
 

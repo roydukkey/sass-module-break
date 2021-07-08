@@ -11,7 +11,6 @@
 @use 'sass-exception/src/exception/parameter'
 @use 'sass-exception/src/exception/parameter-type'
 @use '../break/horizontal-sizes'
-@use '../break/vertical-sizes'
 
 
 ///
@@ -32,13 +31,10 @@
 /// @require parameter-type.parameter-type
 /// @require horizontal-sizes.$sizes
 /// @require horizontal-sizes.$values
-/// @require vertical-sizes.$sizes
-/// @require vertical-sizes.$values
 ///
 @function validate-breakpoint($context, $name, $value, $rule, $is-mixin: false, $must-be-name: false)
-	$is-horizontal: $rule == 'min-width' or $rule == 'max-width'
-	$sizes: if($is-horizontal, horizontal-sizes.$sizes, vertical-sizes.$sizes)
-	$values: if($is-horizontal, horizontal-sizes.$values, vertical-sizes.$values)
+	$sizes: horizontal-sizes.$sizes
+	$values: horizontal-sizes.$values
 	$size: $value
 	$type: meta.type-of($value)
 
@@ -53,10 +49,10 @@
 		$types: if($must-be-name, 'string', 'string' 'number')
 		@return parameter-type.parameter-type($context, $name, $value, $types...)
 
-	@if $is-mixin and ($size <= 0 or ($rule == 'max-width' or $rule == 'max-height') and $type == 'string' and $size == list.nth($values, -1))
+	@if $is-mixin and ($size <= 0 or $rule == 'max-width' and $type == 'string' and $size == list.nth($values, -1))
 		@return null
 
-	@if ($rule == 'max-width' or $rule == 'max-height') and $size > 0
+	@if $rule == 'max-width' and $size > 0
 		$size: $size - $-max-correction
 
 	@return map.set((), $rule, $size)

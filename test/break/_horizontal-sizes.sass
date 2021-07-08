@@ -9,25 +9,25 @@
 @use 'true'
 
 
-@include true.describe('@variable src.$horizontal-sizes')
+@include true.describe('@variable src.$sizes')
 
 	@include true.it('Configured sizes are validated and sorted')
-		$assert: src.$horizontal-sizes
+		$assert: src.$sizes
 		$expected: (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px)
 		@include true.assert-equal($assert, $expected)
 
 
-@include true.describe('@variable src.$horizontal-names')
+@include true.describe('@variable src.$names')
 
 	@include true.it('Configured names sorted')
-		$assert: src.$horizontal-names
+		$assert: src.$names
 		$expected: (xs, sm, md, lg, xl, xxl)
 		@include true.assert-equal($assert, $expected)
 
 
-@include true.describe('@variable src.$horizontal-values')
+@include true.describe('@variable src.$values')
 
 	@include true.it('Configured values sorted')
-		$assert: src.$horizontal-values
+		$assert: src.$values
 		$expected: (0, 576px, 768px, 992px, 1200px, 1400px)
 		@include true.assert-equal($assert, $expected)

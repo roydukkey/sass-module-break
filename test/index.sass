@@ -6,14 +6,12 @@
 ////
 
 $horizontal-sizes: (sm: 576px, xxl: 1400px, lg: 992px, xl: 1200px, xs: 0, md: 768px)
-$vertical-sizes: (md: 756px, xl: 1040px, lg: 929px, xxl: 2100px, xs: 0, sm: 678px)
 
 @use 'true' with ($catch-errors: true)
-@use 'src' with ($horizontal-sizes: $horizontal-sizes, $vertical-sizes: $vertical-sizes)
+@use 'src' with ($sizes: $horizontal-sizes)
 
 
 // Required by 'src/break/horizontal-sizes'
-// Required by 'src/break/vertical-sizes'
 @use 'internal/validate-sizes'
 
 // Required by 'src/break/in'
@@ -29,17 +27,3 @@ $vertical-sizes: (md: 756px, xl: 1040px, lg: 929px, xxl: 2100px, xs: 0, sm: 678p
 // Required by 'src/break/in-only'
 @use 'break/in-between'
 @use 'break/in-only'
-
-// Required by 'src/break/down'
-// Required by 'src/break/down-between'
-// Required by 'src/break/down-only'
-// Required by 'src/break/up'
-@use 'break/vertical-sizes'
-// Required by 'src/break/down-between'
-@use 'break/down'
-// Required by 'src/break/down-between'
-// Required by 'src/break/down-only'
-@use 'break/up'
-// Required by 'src/break/down-only'
-@use 'break/down-between'
-@use 'break/down-only'

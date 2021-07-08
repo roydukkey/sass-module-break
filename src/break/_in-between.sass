@@ -20,14 +20,14 @@
 ///
 /// @throw No breakpoint exists by the name `#{$first-name|$second-name}`
 ///
-	@overload in-between($first-name, $second-name)
+	@overload between($first-name, $second-name)
 ///
 /// Generates a media query rule for the given sizes which is equal and wider than the smaller, and equal and narrower than the larger.
 ///
 /// @param {Number} $first-size - The smaller size at which the generated rule should break.
 /// @param {Number} $second-size - The larger size at which the generated rule should break.
 ///
-	@overload in-between($first-size, $second-size)
+	@overload between($first-size, $second-size)
 ///
 /// @return {String}
 ///
@@ -40,19 +40,19 @@
 /// @require internal.value
 /// @require sass-exception.parameter
 ///
-@function in-between($first-breakpoint, $second-breakpoint)
-	$first-breakpoint: internal.validate-breakpoint('in-between', 'first-breakpoint', $first-breakpoint, 'min-width')
+@function between($first-breakpoint, $second-breakpoint)
+	$first-breakpoint: internal.validate-breakpoint('between', 'first-breakpoint', $first-breakpoint, 'min-width')
 
 	@if meta.type-of($first-breakpoint) != 'map'
 		@error $first-breakpoint
 
-	$second-breakpoint: internal.validate-breakpoint('in-between', 'second-breakpoint', $second-breakpoint, 'max-width')
+	$second-breakpoint: internal.validate-breakpoint('between', 'second-breakpoint', $second-breakpoint, 'max-width')
 
 	@if meta.type-of($second-breakpoint) != 'map'
 		@error $second-breakpoint
 
 	@if internal.value($first-breakpoint) >= internal.value($second-breakpoint)
-		@error sass-exception.parameter('First breakpoint must be smaller than second breakpoint', 'in-between', 'first-breakpoint', 'second-breakpoint')
+		@error sass-exception.parameter('First breakpoint must be smaller than second breakpoint', 'between', 'first-breakpoint', 'second-breakpoint')
 
 	@return '#{internal.to-string($first-breakpoint)} and #{internal.to-string($second-breakpoint)}'
 
@@ -65,14 +65,14 @@
 ///
 /// @throw No breakpoint exists by the name `#{$first-name|$second-name}`
 ///
-	@overload in-between($first-name, $second-name)
+	@overload between($first-name, $second-name)
 ///
 /// Applies a media query rule to the content for the given sizes which is equal and wider than the smaller, and equal and narrower than the larger.
 ///
 /// @param {Number} $first-size - The smaller size at which the applied rule should break.
 /// @param {Number} $second-size - The larger size at which the applied rule should break.
 ///
-	@overload in-between($first-size, $second-size)
+	@overload between($first-size, $second-size)
 ///
 /// @output Unless the breakpoint is the smallest or largest, makes the content apply to the given breakpoints.
 ///
@@ -80,20 +80,20 @@
 /// @throw First breakpoint must be smaller than second breakpoint.
 ///
 /// @access public
-/// @require in.in
+/// @require in.down
 /// @require internal.to-string
 /// @require internal.validate-breakpoint
 /// @require internal.value
-/// @require out.out
+/// @require out.up
 ///
-@mixin in-between($first-breakpoint, $second-breakpoint)
-	$first: internal.validate-breakpoint('in-between', 'first-breakpoint', $first-breakpoint, 'min-width', true)
+@mixin between($first-breakpoint, $second-breakpoint)
+	$first: internal.validate-breakpoint('between', 'first-breakpoint', $first-breakpoint, 'min-width', true)
 
 	@if $first and meta.type-of($first) != 'map'
 		// true:cannot-test
 		@error $first
 
-	$second: internal.validate-breakpoint('in-between', 'second-breakpoint', $second-breakpoint, 'max-width', true)
+	$second: internal.validate-breakpoint('between', 'second-breakpoint', $second-breakpoint, 'max-width', true)
 
 	@if $second
 
@@ -102,18 +102,18 @@
 			@error $second
 
 		@if $first == null
-			@include in.in($second-breakpoint)
+			@include in.down($second-breakpoint)
 				@content
 
 		@else
 
 			@if internal.value($first) >= internal.value($second)
 				// true:cannot-test
-				@error sass-exception.parameter('First breakpoint must be smaller than second breakpoint', 'in-between', 'first-breakpoint', 'second-breakpoint')
+				@error sass-exception.parameter('First breakpoint must be smaller than second breakpoint', 'between', 'first-breakpoint', 'second-breakpoint')
 
 			@media #{internal.to-string($first)} and #{internal.to-string($second)}
 				@content
 
 	@else
-		@include out.out($first-breakpoint)
+		@include out.up($first-breakpoint)
 			@content

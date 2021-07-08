@@ -10,38 +10,38 @@
 @use 'true'
 
 
-@include true.describe('@function src.in-only')
+@include true.describe('@function src.only')
 
 	@include true.it('Returns a media query rule for the given names')
-		$assert: src.in-only('md')
+		$assert: src.only('md')
 		$expected: '(min-width: 768px) and (max-width: 991.98px)'
 		@include true.assert-equal($assert, $expected)
 
 	@include true.it('Returns a media query rule for smallest breakpoint')
-		$assert: src.in-only(list.nth(src.$horizontal-names, 1))
+		$assert: src.only(list.nth(src.$names, 1))
 		$expected: '(min-width: 0) and (max-width: 575.98px)'
 		@include true.assert-equal($assert, $expected)
 
 	@include true.it('Returns a media query rule for largest breakpoint')
-		$assert: src.in-only(list.nth(src.$horizontal-names, -1))
+		$assert: src.only(list.nth(src.$names, -1))
 		$expected: '(min-width: 1400px)'
 		@include true.assert-equal($assert, $expected)
 
 	@include true.it('Throws when given value is not a string')
-		$assert: src.in-only(false)
-		$expected: 'ERROR: $breakpoint: `false` is not a string for `in-only()`.'
+		$assert: src.only(false)
+		$expected: 'ERROR: $breakpoint: `false` is not a string for `only()`.'
 		@include true.assert-equal($assert, $expected)
 
 	@include true.it('Throws when no breakpoint exists for the given name')
-		$assert: src.in-only('very-large')
-		$expected: 'ERROR: $breakpoint: No breakpoint exists by the name `"very-large"` for `in-only()`.'
+		$assert: src.only('very-large')
+		$expected: 'ERROR: $breakpoint: No breakpoint exists by the name `"very-large"` for `only()`.'
 		@include true.assert-equal($assert, $expected)
 
 	@include true.it('Can be used in a media query')
 		@include true.assert
 
 			@include true.output
-				@media #{src.in-only('sm')}
+				@media #{src.only('sm')}
 					body
 						color: red
 
@@ -51,13 +51,13 @@
 						color: red
 
 
-@include true.describe('@mixin src.in-only')
+@include true.describe('@mixin src.only')
 
 	@include true.it('Creates media query for the given names')
 		@include true.assert
 
 			@include true.output
-				@include src.in-only('md')
+				@include src.only('md')
 					body
 						color: green
 
@@ -70,7 +70,7 @@
 		@include true.assert
 
 			@include true.output
-				@include src.in-only(list.nth(src.$horizontal-names, 1))
+				@include src.only(list.nth(src.$names, 1))
 					body
 						color: blue
 
@@ -83,7 +83,7 @@
 		@include true.assert
 
 			@include true.output
-				@include src.in-only(list.nth(src.$horizontal-names, -1))
+				@include src.only(list.nth(src.$names, -1))
 					body
 						color: blue
 
