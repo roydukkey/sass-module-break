@@ -1,0 +1,80 @@
+// Copyright (c) roydukkey. All rights reserved.
+// Licensed under the MIT. See LICENSE file in the project root for full license information.
+////
+/// @author roydukkey
+/// @group api
+////
+
+@use 'sass:meta'
+@use '../internal'
+
+
+///
+/// Generates a media query rule for the given vertical breakpoint and taller.
+///
+/// @param {String} $name - The name of the breakpoint at which the generated rule should break.
+///
+/// @throw No breakpoint exists by the name `#{$name}`
+///
+	@overload up($name)
+///
+/// Generates a media query rule for the given size and taller.
+///
+/// @param {Number} $size - The size at which the generated rule should break.
+///
+	@overload up($size)
+///
+/// @return {String}
+///
+/// @throw `#{$breakpoint}` is not a string or number.
+///
+/// @access public
+/// @require internal.to-string
+/// @require internal.validate-breakpoint
+///
+@function up($breakpoint)
+	$breakpoint: internal.validate-breakpoint('up', 'breakpoint', $breakpoint, 'min-height')
+
+	@if meta.type-of($breakpoint) != 'map'
+		@error $breakpoint
+
+	@return internal.to-string($breakpoint)
+
+
+///
+/// Applies a media query rule to the content for the given vertical breakpoint and taller.
+///
+/// @param {String} $name - The name of the breakpoint at which the applied rule should break.
+///
+/// @throw No breakpoint exists by the name `#{$name}`
+///
+	@overload up($name)
+///
+/// Applies a media query rule to the content for the given size and taller.
+///
+/// @param {Number} $size - The size at which the applied rule should break.
+///
+	@overload up($size)
+///
+/// @output Unless the breakpoint's size is zero, makes the content apply to the given breakpoint.
+///
+/// @throw `#{$breakpoint}` is not a string or number.
+///
+/// @access public
+/// @require internal.to-string
+/// @require internal.validate-breakpoint
+///
+@mixin up($breakpoint)
+	$breakpoint: internal.validate-breakpoint('up', 'breakpoint', $breakpoint, 'min-height', true)
+
+	@if $breakpoint
+
+		@if meta.type-of($breakpoint) != 'map'
+			// true:cannot-test
+			@error $breakpoint
+
+		@media #{internal.to-string($breakpoint)}
+			@content
+
+	@else
+		@content

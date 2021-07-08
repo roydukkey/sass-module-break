@@ -1,0 +1,21 @@
+// Copyright (c) roydukkey. All rights reserved.
+// Licensed under the MIT. See LICENSE file in the project root for full license information.
+////
+/// @author roydukkey
+/// @group internal
+////
+
+@use 'sass-module-map/src/map/to-string' as sass-module-map
+
+
+///
+/// Returns a string representing the specified breakpoint.
+///
+/// @param {Map} $list - The breakpoint from which to generate a string.
+/// @return {String}
+///
+/// @access internal
+/// @require sass-module-map.to-string
+///
+@function to-string($breakpoint)
+	@return '(' + sass-module-map.to-string($breakpoint) + ')'
