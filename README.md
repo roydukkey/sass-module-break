@@ -40,13 +40,13 @@ sass.render({
 
 <dl>
 
-  <dt><a href="//github.com/roydukkey/sass-module-break/tree/master/src/break/_horizontal-sizes.sass"><code>$sizes !default</code></a></dt>
+  <dt><a href="//github.com/roydukkey/sass-module-break/blob/1.x.x/src/break/_horizontal-sizes.sass"><code>$sizes !default</code></a></dt>
   <dd>A configurable map defining the dimensions at which layout will change, adapting to different screen widths, according to media queries.</dd>
 
-  <dt><a href="//github.com/roydukkey/sass-module-break/tree/master/src/break/_horizontal-sizes.sass"><code>$names</code></a></dt>
+  <dt><a href="//github.com/roydukkey/sass-module-break/blob/1.x.x/src/break/_horizontal-sizes.sass"><code>$names</code></a></dt>
   <dd>A list of sorted horizontal breakpoint names.</dd>
 
-  <dt><a href="//github.com/roydukkey/sass-module-break/tree/master/src/break/_horizontal-sizes.sass"><code>$values</code></a></dt>
+  <dt><a href="//github.com/roydukkey/sass-module-break/blob/1.x.x/src/break/_horizontal-sizes.sass"><code>$values</code></a></dt>
   <dd>A list of sorted horizontal breakpoint values.</dd>
 
 </dl>
@@ -57,16 +57,16 @@ Mixins apply a media query rule to the provided content. Functions generate a me
 
 <dl>
 
-  <dt><a href="//github.com/roydukkey/sass-module-break/tree/master/src/break/_out.sass"><code>up ( $breakpoint )</code></a></dt>
+  <dt><a href="//github.com/roydukkey/sass-module-break/blob/1.x.x/src/break/_out.sass"><code>up ( $breakpoint )</code></a></dt>
   <dd>Produces a media query rule for the given horizontal breakpoint and wider.</dd>
 
-  <dt><a href="//github.com/roydukkey/sass-module-break/tree/master/src/break/_in.sass"><code>down ( $breakpoint )</code></a></dt>
+  <dt><a href="//github.com/roydukkey/sass-module-break/blob/1.x.x/src/break/_in.sass"><code>down ( $breakpoint )</code></a></dt>
   <dd>Produces a media query rule for the given horizontal breakpoint and narrower.</dd>
 
-  <dt><a href="//github.com/roydukkey/sass-module-break/tree/master/src/break/_in-between.sass"><code>between ( $first-breakpoint, $second-breakpoint )</code></a></dt>
+  <dt><a href="//github.com/roydukkey/sass-module-break/blob/1.x.x/src/break/_in-between.sass"><code>between ( $first-breakpoint, $second-breakpoint )</code></a></dt>
   <dd>Produces a media query rule for the given horizontal breakpoints which is equal and wider than the smaller, and equal and narrower than the larger.</dd>
 
-  <dt><a href="//github.com/roydukkey/sass-module-break/tree/master/src/break/_in-only.sass"><code>only ( $breakpoint )</code></a></dt>
+  <dt><a href="//github.com/roydukkey/sass-module-break/blob/1.x.x/src/break/_in-only.sass"><code>only ( $breakpoint )</code></a></dt>
   <dd>Produces a media query rule for the given horizontal breakpoint.</dd>
 
 </dl>
