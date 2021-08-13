@@ -6,7 +6,7 @@
 ////
 
 @use 'sass:meta'
-@use 'sass-exception/src/exception/parameter' as sass-exception
+@use 'sass-exception/src/exception/parameter'
 @use 'in'
 @use 'out'
 @use '../internal'
@@ -38,7 +38,7 @@
 /// @require internal.to-string
 /// @require internal.validate-breakpoint
 /// @require internal.value
-/// @require sass-exception.parameter
+/// @require parameter.parameter
 ///
 @function between($first-breakpoint, $second-breakpoint)
 	$first-breakpoint: internal.validate-breakpoint('between', 'first-breakpoint', $first-breakpoint, 'min-width')
@@ -52,7 +52,7 @@
 		@error $second-breakpoint
 
 	@if internal.value($first-breakpoint) >= internal.value($second-breakpoint)
-		@error sass-exception.parameter('First breakpoint must be smaller than second breakpoint', 'between', 'first-breakpoint', 'second-breakpoint')
+		@error parameter.parameter('First breakpoint must be smaller than second breakpoint', 'between', 'first-breakpoint', 'second-breakpoint')
 
 	@return '#{internal.to-string($first-breakpoint)} and #{internal.to-string($second-breakpoint)}'
 
@@ -109,7 +109,7 @@
 
 			@if internal.value($first) >= internal.value($second)
 				// true:cannot-test
-				@error sass-exception.parameter('First breakpoint must be smaller than second breakpoint', 'between', 'first-breakpoint', 'second-breakpoint')
+				@error parameter.parameter('First breakpoint must be smaller than second breakpoint', 'between', 'first-breakpoint', 'second-breakpoint')
 
 			@media #{internal.to-string($first)} and #{internal.to-string($second)}
 				@content
