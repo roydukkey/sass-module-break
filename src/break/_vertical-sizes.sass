@@ -7,7 +7,7 @@
 
 @use 'sass:map'
 @use 'sass:meta'
-@use '../internal/validate-sizes' as internal
+@use '../internal/validate-sizes'
 
 
 ///
@@ -19,12 +19,12 @@
 /// @throw The smallest breakpoint must be equal to zero, but is `#{size}`
 ///
 /// @access public
-/// @require internal.validate-sizes
+/// @require validate-sizes.validate-sizes
 ///
 $sizes: (x-small: 0) !default
 
 
-$sizes: internal.validate-sizes($sizes)
+$sizes: validate-sizes.validate-sizes($sizes)
 
 @if meta.type-of($sizes) == 'string'
 	// true:cannot-test

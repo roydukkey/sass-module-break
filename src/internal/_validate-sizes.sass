@@ -10,7 +10,7 @@
 @use 'sass:meta'
 @use 'sass-exception/src/exception/variable'
 @use 'sass-exception/src/exception/variable-type'
-@use 'sass-list/src/list/sort' as sass-list
+@use 'sass-list/src/list/sort'
 @use 'sass-module-map/src/map/from'
 @use 'sass-module-map/src/map/compare/numeric-value'
 
@@ -23,8 +23,8 @@
 ///
 /// @access internal
 /// @require compare
-/// @require sass-list.sort
 /// @require from.from
+/// @require sort.sort
 /// @require variable.variable
 /// @require variable-type.variable-type
 ///
@@ -33,7 +33,7 @@
 	@if meta.type-of($sizes) != 'map'
 		@return variable-type.variable-type('sizes', $sizes, 'map')
 
-	$sizes: from.from(sass-list.sort($sizes, meta.get-function('compare'))...)
+	$sizes: from.from(sort.sort($sizes, meta.get-function('compare'))...)
 
 	$smallest: list.nth(map.values($sizes), 1)
 

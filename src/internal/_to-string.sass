@@ -5,7 +5,7 @@
 /// @group internal
 ////
 
-@use 'sass-module-map/src/map/to-string' as sass-module-map
+@use 'sass-module-map/src/map/to-string'
 
 
 ///
@@ -15,7 +15,7 @@
 /// @return {String}
 ///
 /// @access internal
-/// @require sass-module-map.to-string
+/// @require to-string.to-string
 ///
 @function to-string($breakpoint)
-	@return '(' + sass-module-map.to-string($breakpoint) + ')'
+	@return '(' + to-string.to-string($breakpoint) + ')'
