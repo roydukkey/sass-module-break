@@ -1,0 +1,27 @@
+// Copyright (c) roydukkey. All rights reserved.
+// Licensed under the MIT. See LICENSE file in the project root for full license information.
+////
+/// @author roydukkey
+/// @group api
+////
+
+@use 'sass:color'
+@use '../internal/property'
+
+
+@mixin annotate($selector: 'body::before', $color: #ba6aab)
+	$border: 1px solid color.adjust($color, $lightness: -0.05, $saturation: -0.10)
+
+	#{$selector}
+		position: fixed
+		right: 0
+		top: 0
+		border:
+			bottom: property.use('border-bottom', property.use('border', $border))
+			left: property.use('border-left', property.use('border', $border))
+		background: property.use('background', $color)
+		color: property.use('color', if(color.whiteness($color) > 50%, #000, #fff))
+		font: property.use('font', small-caption)
+		z-index: property.use('z', 100)
+		pointer-events: none
+

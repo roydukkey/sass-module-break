@@ -1,0 +1,20 @@
+// Copyright (c) roydukkey. All rights reserved.
+// Licensed under the MIT. See LICENSE file in the project root for full license information.
+////
+/// @author roydukkey
+/// @group api
+////
+
+@use 'sass:string'
+
+
+$-namespace: '--break-annotation'
+
+
+@function use($name, $fallback: null)
+	$name: #{string.unquote($-namespace)}-#{string.unquote($name)}
+
+	@if $fallback != null
+		@return var($name, $fallback)
+
+	@return var($name)
