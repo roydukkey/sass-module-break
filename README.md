@@ -1,3 +1,8 @@
+**Renamed!**
+This package has been renamed to [`@sass-fairy/break`](https://github.com/roydukkey/sass-fairy/tree/master/packages/break#readme) and organised in a mono-repo for better maintainablity, an improved user experience, and [full documentation](https://sass-fairy.com/api/break). Explore more about the change at [sass-fairy.com](https://sass-fairy.com).
+
+---
+
 # sass-break
 
 [![Release Version](https://img.shields.io/npm/v/sass-break.svg)](https://www.npmjs.com/package/sass-break)
